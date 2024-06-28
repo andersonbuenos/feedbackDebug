@@ -1,0 +1,24 @@
+<form (ngSubmit)="onSubmit()" #loginForm="ngForm">
+    <div class="form-group">
+      <span class="p-float-label">
+        <p-inputNumber inputId="username" type="text" name="username" [(ngModel)]="credentials.username" required></p-inputNumber>
+        <label for="username">Email/Nome de Usuário</label>
+      </span>
+      <small class="p-error" *ngIf="loginForm.controls['username']?.errors?.['required']">
+        Campo obrigatório
+      </small>
+    </div>
+  
+    <div class="form-group">
+      <span class="p-float-label">
+        <p-password inputId="password" name="password" [(ngModel)]="credentials.password" required [feedback]="false"></p-password>
+        <label for="password">Senha</label>
+      </span>
+      <small class="p-error" *ngIf="loginForm.controls['password']?.errors?.['required']">
+        Campo obrigatório
+      </small>
+    </div>
+  
+    <p-button label="Entrar" type="submit" [disabled]="!loginForm.valid"></p-button>
+  </form>
+  
